@@ -5,15 +5,23 @@ import java.util.Calendar;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Divulgacao {
 	@Id @GeneratedValue
 	private Long codigo;
+	@ManyToOne
 	private Imovel imovel;
+	@OneToOne
 	private Jornal jornal;
+	@Temporal(TemporalType.DATE)
 	private Calendar data;
 	private Double custo;
+	
 	public Imovel getImovel() {
 		return imovel;
 	}

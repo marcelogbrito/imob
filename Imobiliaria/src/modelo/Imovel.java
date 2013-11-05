@@ -2,9 +2,12 @@ package modelo;
 
 import java.util.List;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 import enums.TipoImovel;
 @Entity
@@ -12,9 +15,12 @@ public class Imovel {
 	@Id @GeneratedValue
 	private Integer codigo;
 	private String localizacao;
+	@Enumerated
 	private TipoImovel tipoImovel;
 	private Double ValorSolicitado;
+	@OneToOne
 	private Proprietario proprietario;
+	@ElementCollection
 	private List <Divulgacao> divulgacoes;
 	
 	

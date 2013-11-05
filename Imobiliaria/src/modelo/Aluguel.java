@@ -5,14 +5,22 @@ import java.util.Calendar;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 @Entity
 public class Aluguel {
 	@Id @GeneratedValue
 	private Integer codigo;
+	@Temporal(TemporalType.DATE)
 	private Calendar dataInicio;
+	@Temporal(TemporalType.DATE)
 	private Calendar dataTermino;
 	private Double valor;
+	@OneToOne
 	private Cliente cliente;
+	@OneToOne
 	private Imovel imovel;
 	
 	public Integer getCodigo() {

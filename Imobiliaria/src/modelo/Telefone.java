@@ -3,16 +3,20 @@ package modelo;
 
 
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import enums.TipoTelefone;
 @Entity
 public class Telefone {
 	@Id @GeneratedValue
 	private Long codigo;
+	@Enumerated
 	private TipoTelefone tipo;
 	private String numeroTelefone;
+	@ManyToOne
 	private Cliente cliente;
 	
 	public TipoTelefone getTipo() {

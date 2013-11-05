@@ -2,8 +2,12 @@ package modelo;
 
 import java.util.List;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.UniqueConstraint;
 
 import enums.Funcao;
 
@@ -14,11 +18,16 @@ public class Funcionario {
 	private String ctps;
 	private String nome;
 	private String endereco;
+	@ElementCollection
 	private List <Telefone> telefones;
+	@Enumerated
 	private Funcao funcao;
 	private Double salario;
+	@OneToOne
 	private Supervisor supervisor;
+	@OneToOne
 	private Agencia agencia;
+	
 	public String getCtps() {
 		return ctps;
 	}

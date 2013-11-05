@@ -3,12 +3,14 @@ package modelo;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Agencia {
 	@Id @GeneratedValue
 	private Integer codigo;
 	private String descricao;
+	@OneToOne
 	private Gerente gerente;
 	
 	public Integer getCodigo() {

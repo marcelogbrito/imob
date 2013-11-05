@@ -2,6 +2,7 @@ package modelo;
 
 import java.util.List;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -11,7 +12,9 @@ public class Cliente {
 	private Long cpf;
 	private String nome;
 	private String endereco;
+	@ElementCollection
 	private List <Telefone> telefones;
+	@ElementCollection
 	private List <Aluguel> alugueis;
 	
 	public Long getCpf() {

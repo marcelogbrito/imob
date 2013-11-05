@@ -3,12 +3,16 @@ package modelo;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Atendimento {
 	@Id @GeneratedValue
 	private Long codigo;
+	@ManyToOne
 	private Cliente cliente;
+	@OneToOne
 	private Funcionario funcionario;
 	
 	public Long getCodigo() {
