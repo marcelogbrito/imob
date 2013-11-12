@@ -42,6 +42,10 @@ public class ClienteBean implements Serializable {
 		this.cliente = new Cliente();
 	}
 	
+	public void excluir(){
+		new DAO<Cliente>(Cliente.class).remove(this.cliente);
+	}
+	
 	
 	
 		

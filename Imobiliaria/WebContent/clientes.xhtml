@@ -5,71 +5,44 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui" >
-
-	<ui:composition template="">
-	</ui:composition>
-	
-	<h:head>
+<ui:composition template="_template.xhtml"> 
+<ui:define name="titulo">Novo Cliente</ui:define>
+	<ui:define name="conteudo">	
+	<h:head/>
 		<h:body>
-		<h1>Novo Livro</h1>
+		
 		<h:form>
-			<fieldset>
-				<legend>Dados do Livro</legend>
-				<h:panelGrid columns="2">
+		 <p:messages id="messages" autoUpdate="true"/>
+		 <p:growl autoUpdate="true"/>
+		 	<p:fieldset legend="Dados do cliente">
+		 		<h:panelGrid columns="2">
+					<p:outputLabel for="cpf" value="CPF" /><p:inputMask size="18"  mask="99999999999" id="cpf" value="#{clienteBean.cliente.cpf}" required="true" requiredMessage="CPF Obrigatório"><f:ajax event="blur"/></p:inputMask>
+					<p:outputLabel for="nome" value="Nome"/><p:inputText size="60" id="nome" value="#{clienteBean.cliente.nome}" required="true" requiredMessage="Nome é obrigatório"><f:ajax event="blur"/></p:inputText>
+					<p:outputLabel for="endereco" value="Endereço"/><p:inputText size="80" id="endereco" value="#{clienteBean.cliente.endereco}"></p:inputText> <p:tooltip for="endereco" value="Digite logradouro, bairro, número da casa" />
+					<p:commandButton value="Inserir" action="#{clienteBean.gravar}"><f:ajax execute="@form" render="@form :tabelaClientes" /></p:commandButton>
+		 		</h:panelGrid>
+		 	</p:fieldset>
+		 	</h:form>
+		 	
+		 	<br />
 
-					<h:outputLabel value="Titulo:" for="titulo" />
-					<h:inputText id="titulo" value="#{livroBean.livro.titulo}" />
+		 	<p:dataTable id="tabelaClientes" value="#{clienteBean.clientes}" var="cliente" paginator="true" rows="4" paginatorPosition="bottom">
+		 		<p:column>
+		 			<f:facet name="header">CPF</f:facet><h:outputText value="#{cliente.cpf}"/>
+		 		</p:column>
+		 		<p:column>
+		 			<f:facet name="header">Nome</f:facet><h:outputText value="#{cliente.nome}"/>
+		 		</p:column>
+		 		<p:column>
+		 			<f:facet name="header">Endereço</f:facet><h:outputText value="#{cliente.endereco}"/>
+		 		</p:column>
+		 		<p:column>
+		 			<f:facet name="header"></f:facet><p:commandLink value="Excluir" action="#{clienteBean.excluir}" />
+		 		</p:column>
+		 	</p:dataTable>
 
-					<h:outputLabel value="ISBN:" for="isbn" />
-					<h:inputText id="isbn" value="#{livroBean.livro.isbn}" />
-
-					<h:outputLabel value="Preço:" for="preco" />
-					<h:inputText id="preco" value="#{livroBean.livro.preco}" />
-
-					<h:outputLabel value="Data de Lançamento:" for="dataLancamento" />
-					<h:inputText id="dataLancamento"
-						value="#{livroBean.livro.dataLancamento}" />
-
-				</h:panelGrid>
-			</fieldset>
+		</h:body>
 	
-			<fieldset>
-				<legend>Dados do Autor</legend>
-				<h:panelGrid columns="3">
-
-					<h:outputLabel value="Autor:" />
-					<h:selectOneMenu value="#{livroBean.autorId}">
-						<f:selectItems value="#{livroBean.autores}" itemValue="#{autor.id}"
-							itemLabel="#{autor.nome}" var="autor" />
-					</h:selectOneMenu>
-					<h:commandButton action="#{livroBean.adicionarAutor}"
-						value="Adiciona Autor" />
-	
-					<h:dataTable value="#{livroBean.autoresDoLivro}" var="autor">
-						<h:column>
-							<h:outputText value="#{autor.nome}" />
-						</h:column>
-					</h:dataTable>
-				</h:panelGrid>
-			</fieldset>
-	
-			<h:commandButton value="Gravar" action="#{livroBean.gravar}" />
-		</h:form>
-	
-		<h:dataTable value="#{livroBean.livros}" var="livro">
-			<h:column>
-				<f:facet name="header">Titulo</f:facet>
-				<h:outputText value="#{livro.titulo}" />
-			</h:column>
-			<h:column>
-				<f:facet name="header">Preço</f:facet>
-				<h:outputText value="#{livro.preco}" />
-			</h:column>
-			<h:column>
-				<f:facet name="header">Data</f:facet>
-				<h:outputText value="#{livro.dataLancamento}" />
-			</h:column>
-		</h:dataTable>
-	</h:body>
-	</h:head>
+</ui:define>
+	</ui:composition>
 </html>
