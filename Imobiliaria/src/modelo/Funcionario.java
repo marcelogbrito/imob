@@ -6,8 +6,8 @@ import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.UniqueConstraint;
 
 import enums.Funcao;
 
@@ -18,6 +18,7 @@ public class Funcionario {
 	private String ctps;
 	private String nome;
 	private String endereco;
+	@OneToMany(mappedBy="cliente")
 	@ElementCollection
 	private List <Telefone> telefones;
 	@Enumerated

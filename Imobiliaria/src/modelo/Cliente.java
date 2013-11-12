@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Cliente {
@@ -12,8 +13,10 @@ public class Cliente {
 	private Long cpf;
 	private String nome;
 	private String endereco;
+	@OneToMany(mappedBy="cliente")
 	@ElementCollection
 	private List <Telefone> telefones;
+	@OneToMany(mappedBy="cliente")
 	@ElementCollection
 	private List <Aluguel> alugueis;
 	

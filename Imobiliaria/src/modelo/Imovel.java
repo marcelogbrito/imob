@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import enums.TipoImovel;
@@ -21,6 +22,7 @@ public class Imovel {
 	@OneToOne
 	private Proprietario proprietario;
 	@ElementCollection
+	@OneToMany(mappedBy="imovel")
 	private List <Divulgacao> divulgacoes;
 	
 	

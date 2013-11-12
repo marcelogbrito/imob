@@ -5,7 +5,6 @@ import java.util.Calendar;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -14,7 +13,7 @@ import javax.persistence.TemporalType;
 public class Divulgacao {
 	@Id @GeneratedValue
 	private Long codigo;
-	@ManyToOne
+	@OneToOne
 	private Imovel imovel;
 	@OneToOne
 	private Jornal jornal;

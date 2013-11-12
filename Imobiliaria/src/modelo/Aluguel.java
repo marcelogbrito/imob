@@ -5,6 +5,7 @@ import java.util.Calendar;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
@@ -18,7 +19,7 @@ public class Aluguel {
 	@Temporal(TemporalType.DATE)
 	private Calendar dataTermino;
 	private Double valor;
-	@OneToOne
+	@ManyToOne
 	private Cliente cliente;
 	@OneToOne
 	private Imovel imovel;
