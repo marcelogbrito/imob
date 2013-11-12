@@ -6,6 +6,7 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 
 import modelo.Cliente;
+import persistence.DAO;
 @ManagedBean
 public class ClienteBean implements Serializable {
 
@@ -27,6 +28,21 @@ public class ClienteBean implements Serializable {
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
+	
+	public List <Cliente> getClientes(){
+		return new DAO<Cliente>(Cliente.class).listaTodos();
+	}
+	
+	public void gravar() {
+
+		
+
+		new DAO<Cliente>(Cliente.class).adiciona(this.cliente);
+
+		this.cliente = new Cliente();
+	}
+	
+	
 	
 		
 	
